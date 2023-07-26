@@ -150,13 +150,14 @@ namespace Tydzien5Lekcja25ZD
 			dgvDiary.Columns[0].HeaderText = "Numer";
 			dgvDiary.Columns[1].HeaderText = "Imię";
 			dgvDiary.Columns[2].HeaderText = "Nazwisko";
-			dgvDiary.Columns[3].HeaderText = "Uwagi";
-			dgvDiary.Columns[4].HeaderText = "Matematyka";
-			dgvDiary.Columns[5].HeaderText = "Technologia";
-			dgvDiary.Columns[6].HeaderText = "Fizyka";
-			dgvDiary.Columns[7].HeaderText = "Język polski";
-			dgvDiary.Columns[8].HeaderText = "Język obcy";
-			dgvDiary.Columns[9].HeaderText = "Zajęcia dodatkowe";
+			dgvDiary.Columns[3].HeaderText = "Klasa";
+			dgvDiary.Columns[4].HeaderText = "Uwagi";
+			dgvDiary.Columns[5].HeaderText = "Matematyka";
+			dgvDiary.Columns[6].HeaderText = "Technologia";
+			dgvDiary.Columns[7].HeaderText = "Fizyka";
+			dgvDiary.Columns[8].HeaderText = "Język polski";
+			dgvDiary.Columns[9].HeaderText = "Język obcy";
+			dgvDiary.Columns[10].HeaderText = "Zajęcia dodatkowe";
 		}
 	}
 }
