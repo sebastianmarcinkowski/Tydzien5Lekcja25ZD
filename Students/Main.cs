@@ -86,12 +86,7 @@ namespace Tydzien5Lekcja25ZD
 		}
 		private void cbxGroupFilter_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var students = _fileHelper.DeserializeFromFile();
-
-			if (cbxGroupFilter.Text != "Wszyscy")
-				students = students.Where(x => x.Group == cbxGroupFilter.Text).ToList();
-
-			dgvDiary.DataSource = students;
+			FilterGroup();
 		}
 		private void Main_FormClosed(object sender, FormClosedEventArgs e)
 		{
@@ -102,14 +97,14 @@ namespace Tydzien5Lekcja25ZD
 
 			Settings.Default.Save();
 		}
-		
+
 		private void DeleteStudent(int id)
 		{
 			var students = _fileHelper.DeserializeFromFile();
 			students.RemoveAll(x => x.Id == id);
 			_fileHelper.SerializeToFile(students);
 		}
-		public void FillGroupFilter(List<string> groups)
+		private void FillGroupFilter(List<string> groups)
 		{
 			cbxGroupFilter.Items.Clear();
 
@@ -123,7 +118,16 @@ namespace Tydzien5Lekcja25ZD
 
 			cbxGroupFilter.SelectedIndex = 0;
 		}
-		public bool IsMaximize
+		private void FilterGroup()
+		{
+			var students = _fileHelper.DeserializeFromFile();
+
+			if (cbxGroupFilter.Text != "Wszyscy")
+				students = students.Where(x => x.Group == cbxGroupFilter.Text).ToList();
+
+			dgvDiary.DataSource = students;
+		}
+		private bool IsMaximize
 		{
 			get
 			{
@@ -138,6 +142,8 @@ namespace Tydzien5Lekcja25ZD
 		{
 			var students = _fileHelper.DeserializeFromFile();
 			dgvDiary.DataSource = students;
+
+			FilterGroup();
 		}
 		private void SetColumnHeader()
 		{
