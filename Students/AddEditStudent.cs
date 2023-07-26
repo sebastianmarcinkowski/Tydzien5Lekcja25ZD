@@ -20,37 +20,13 @@ namespace Tydzien5Lekcja25ZD
 
 			GetStudentData();
 			tbFirstName.Select();
+			FillStringListToComboBox(cbxGroup, Program.Groups);
 		}
 
-		private void GetStudentData()
+		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			if (_studentId != 0)
-			{
-				Text = "Edytowanie danych ucznia";
-
-				var students = _fileHelper.DeserializeFromFile();
-				_student = students.FirstOrDefault(x => x.Id == _studentId);
-
-				if (_student == null)
-					throw new Exception("Brak użytkownika o podanym Id.");
-
-				FillTextBoxes();
-			}
+			Close();
 		}
-
-		private void FillTextBoxes()
-		{
-			tbId.Text = _student.Id.ToString();
-			tbFirstName.Text = _student.FirstName;
-			tbLastName.Text = _student.LastName;
-			tbMath.Text = _student.Math;
-			tbTechnology.Text = _student.Technology;
-			tbPhysics.Text = _student.Physics;
-			tbPolishLang.Text = _student.PolishLang;
-			tbForeignLang.Text = _student.ForeignLang;
-			rtbComments.Text = _student.Comments;
-		}
-
 		private void btnConfirm_Click(object sender, EventArgs e)
 		{
 			var students = _fileHelper.DeserializeFromFile();
@@ -79,15 +55,15 @@ namespace Tydzien5Lekcja25ZD
 				Physics = tbPhysics.Text,
 				PolishLang = tbPolishLang.Text,
 				ForeignLang = tbForeignLang.Text,
-				Comments = rtbComments.Text
+				Comments = rtbComments.Text,
+				ExtraActivities = chbxExtraActivities.Checked,
+				Group = cbxGroup.Text
 			};
 
 			students.Add(student);
 		}
-
-		public void AssignIdToNewStudent(List<Student> students)
+		private void AssignIdToNewStudent(List<Student> students)
 		{
-			// LINQ.
 			var studentWithHighestId = students
 				.OrderByDescending(x => x.Id)
 				.FirstOrDefault();
@@ -95,10 +71,44 @@ namespace Tydzien5Lekcja25ZD
 			_studentId = studentWithHighestId == null ?
 				1 : studentWithHighestId.Id + 1;
 		}
-
-		private void btnCancel_Click(object sender, EventArgs e)
+		private void FillStringListToComboBox(ComboBox comboBox, List<string> items)
 		{
-			Close();
+			if (items.Count > 0)
+			{
+				comboBox.Items.Clear();
+
+				foreach (var item in items)
+					comboBox.Items.Add(item);
+			}
+		}
+		private void FillTextBoxes()
+		{
+			tbId.Text = _student.Id.ToString();
+			tbFirstName.Text = _student.FirstName;
+			tbLastName.Text = _student.LastName;
+			tbMath.Text = _student.Math;
+			tbTechnology.Text = _student.Technology;
+			tbPhysics.Text = _student.Physics;
+			tbPolishLang.Text = _student.PolishLang;
+			tbForeignLang.Text = _student.ForeignLang;
+			chbxExtraActivities.Checked = _student.ExtraActivities;
+			rtbComments.Text = _student.Comments;
+			cbxGroup.Text = _student.Group;
+		}
+		private void GetStudentData()
+		{
+			if (_studentId != 0)
+			{
+				Text = "Edytowanie danych ucznia";
+
+				var students = _fileHelper.DeserializeFromFile();
+				_student = students.FirstOrDefault(x => x.Id == _studentId);
+
+				if (_student == null)
+					throw new Exception("Brak użytkownika o podanym Id.");
+
+				FillTextBoxes();
+			}
 		}
 	}
 }

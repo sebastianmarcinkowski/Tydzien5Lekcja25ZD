@@ -33,6 +33,8 @@
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.dgvDiary = new System.Windows.Forms.DataGridView();
+			this.cbxGroupFilter = new System.Windows.Forms.ComboBox();
+			this.lbGroupFilter = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -72,7 +74,7 @@
 			// btnRefresh
 			// 
 			this.btnRefresh.BackColor = System.Drawing.Color.CornflowerBlue;
-			this.btnRefresh.Location = new System.Drawing.Point(255, 12);
+			this.btnRefresh.Location = new System.Drawing.Point(819, 13);
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(75, 23);
 			this.btnRefresh.TabIndex = 3;
@@ -82,9 +84,9 @@
 			// 
 			// dgvDiary
 			// 
-			this.dgvDiary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvDiary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvDiary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDiary.BackgroundColor = System.Drawing.Color.White;
 			this.dgvDiary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -95,12 +97,32 @@
 			this.dgvDiary.Size = new System.Drawing.Size(881, 396);
 			this.dgvDiary.TabIndex = 4;
 			// 
+			// cbxGroupFilter
+			// 
+			this.cbxGroupFilter.FormattingEnabled = true;
+			this.cbxGroupFilter.Location = new System.Drawing.Point(310, 12);
+			this.cbxGroupFilter.Name = "cbxGroupFilter";
+			this.cbxGroupFilter.Size = new System.Drawing.Size(121, 21);
+			this.cbxGroupFilter.TabIndex = 5;
+			this.cbxGroupFilter.SelectedIndexChanged += new System.EventHandler(this.cbxGroupFilter_SelectedIndexChanged);
+			// 
+			// lbGroupFilter
+			// 
+			this.lbGroupFilter.AutoSize = true;
+			this.lbGroupFilter.Location = new System.Drawing.Point(255, 17);
+			this.lbGroupFilter.Name = "lbGroupFilter";
+			this.lbGroupFilter.Size = new System.Drawing.Size(49, 13);
+			this.lbGroupFilter.TabIndex = 6;
+			this.lbGroupFilter.Text = "Wyświetl";
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.WhiteSmoke;
 			this.ClientSize = new System.Drawing.Size(906, 450);
+			this.Controls.Add(this.lbGroupFilter);
+			this.Controls.Add(this.cbxGroupFilter);
 			this.Controls.Add(this.dgvDiary);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnDelete);
@@ -112,6 +134,7 @@
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
 			((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -122,6 +145,8 @@
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.DataGridView dgvDiary;
+		private System.Windows.Forms.ComboBox cbxGroupFilter;
+		private System.Windows.Forms.Label lbGroupFilter;
 	}
 }
 
